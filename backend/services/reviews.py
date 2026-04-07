@@ -120,7 +120,7 @@ async def search_and_summarize_reviews(product_name: str) -> dict:
             {"role": "user", "content": user_message},
         ],
         "temperature": 0.2,
-        "max_tokens": 1000,
+        "max_tokens": 4000,
         "response_format": {"type": "json_object"},
     }
 

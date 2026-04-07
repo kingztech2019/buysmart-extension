@@ -29,6 +29,22 @@
 
 ---
 
+## 📹 Demo
+
+Watch BuySmart in action:
+
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=i3iLuH7colc" target="_blank">
+    <img src="https://img.youtube.com/vi/i3iLuH7colc/0.jpg" alt="BuySmart Demo" width="600" />
+  </a>
+
+  **Click the image above to watch the demo →**
+</div>
+
+> **Getting started?** Follow our [Quick Start guide](#-quick-start) below!
+
+---
+
 ## 🏪 Supported E-Commerce Sites
 
 | Site | Auto-detected |
