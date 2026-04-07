@@ -41,3 +41,4 @@ env/
 # SearXNG runtime files (auto-generated, not config)
 searxng/uwsgi.ini
 searxng/*.db
+.claude/
