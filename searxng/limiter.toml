@@ -1,0 +1,18 @@
+# BuySmart SearXNG — limiter configuration
+# Docs: https://docs.searxng.org/admin/searx.limiter.html
+#
+# NOTE: The limiter is disabled via server.limiter: false in settings.yml
+# for this private self-hosted instance. This file is kept here as a
+# reference template for contributors who want to enable it.
+#
+# If you enable the limiter (requires Redis), use the new botdetection syntax:
+#
+# [botdetection.ip_limit]
+# link_token = false
+#
+# [botdetection]
+# # Number of trusted reverse proxies in front of SearXNG
+# # (replaces deprecated real_ip.x_for)
+# trusted_proxies = 1
+# ipv4_prefix = 32
+# ipv6_prefix = 48

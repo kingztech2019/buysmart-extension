@@ -1,0 +1,89 @@
+# SearXNG configuration for BuySmart
+# Docs: https://docs.searxng.org/admin/settings/settings.html
+
+use_default_settings: true
+
+general:
+  debug: false
+  instance_name: "BuySmart Search"
+  contact_url: false
+  enable_metrics: false
+
+server:
+  # port is 8080 inside the container — docker-compose maps host:9090 → container:8080
+  bind_address: "0.0.0.0"
+  secret_key: "${SEARXNG_SECRET_KEY}"
+  public_instance: false
+  image_proxy: false
+  limiter: false
+
+ui:
+  static_use_hash: true
+  default_locale: "en"
+  query_in_title: false
+
+search:
+  safe_search: 0
+  autocomplete: ""
+  default_lang: "en"
+  formats:
+    - html
+    - json
+
+outgoing:
+  request_timeout: 10.0
+  max_request_timeout: 15.0
+  pool_connections: 100
+  pool_maxsize: 20
+  enable_http2: true
+
+# ── Engine overrides ─────────────────────────────────────────────────────────
+# Disable engines that consistently fail or get blocked from Docker.
+# The engines left enabled (DuckDuckGo, Brave, Bing, Mojeek, Qwant) are
+# reliable in containerised environments.
+engines:
+  # --- General: disable unreliable engines ---
+  - name: google
+    disabled: true
+  - name: startpage
+    disabled: true
+  - name: yahoo
+    disabled: true
+  - name: ask
+    disabled: true
+  - name: seznam
+    disabled: true
+  - name: baidu
+    disabled: true
+  - name: yandex
+    disabled: true
+
+  # --- Shopping: disable blocked engines ---
+  - name: geizhals
+    disabled: true
+  - name: google shopping
+    disabled: true
+  - name: ebay
+    disabled: true
+
+  # --- Ensure these reliable engines are active for general searches ---
+  - name: duckduckgo
+    disabled: false
+    categories: [general, web]
+  - name: brave
+    disabled: false
+    categories: [general, web]
+  - name: bing
+    disabled: false
+    categories: [general, web]
+  - name: mojeek
+    disabled: false
+    categories: [general, web]
+  - name: qwant
+    disabled: false
+    categories: [general, web]
+
+  # --- Shopping engines that tend to work ---
+  - name: bing shopping
+    disabled: false
+    categories: [shopping]

@@ -1,0 +1,60 @@
+services:
+  # ──────────────────────────────────────────────
+  # SearXNG — open-source meta search engine
+  # Accessible at http://localhost:9090
+  # ──────────────────────────────────────────────
+  searxng:
+    image: searxng/searxng:latest
+    container_name: buysmart-searxng
+    restart: unless-stopped
+    ports:
+      - "9090:8080"
+    volumes:
+      - ./searxng:/etc/searxng:rw
+    environment:
+      - SEARXNG_SECRET_KEY=${SEARXNG_SECRET_KEY:-buysmart-change-this-secret-key}
+    networks:
+      - buysmart-network
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8080/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ──────────────────────────────────────────────
+  # BuySmart Backend — FastAPI + OpenRouter
+  # Accessible at http://localhost:8000
+  # API Docs at http://localhost:8000/docs
+  # ──────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: buysmart-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+      - OPENROUTER_MODEL=${OPENROUTER_MODEL:-qwen/qwen3.6-plus-preview:free}
+      - SEARXNG_URL=http://searxng:8080
+      - TAVILY_API_KEY=${TAVILY_API_KEY:-}
+      - DEEPCRAWL_API_KEY=${DEEPCRAWL_API_KEY:-}
+    env_file:
+      - .env
+    depends_on:
+      searxng:
+        condition: service_healthy
+    networks:
+      - buysmart-network
+    volumes:
+      - ./backend:/app:ro    # mount source — restart only (no rebuild) during dev
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  buysmart-network:
+    driver: bridge
