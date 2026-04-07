@@ -1,6 +1,8 @@
 # 🛍️ BuySmart — AI-Powered Shopping Assistant
 
-> An open-source Chrome Extension that automatically detects products on e-commerce sites and delivers AI-powered price comparisons and buying recommendations — powered by [SearXNG](https://searxng.org/), [Tavily](https://tavily.com/), [Deepcrawl](https://deepcrawl.dev/), and [OpenRouter](https://openrouter.ai/).
+> Built to help users avoid overpaying online by combining AI + real-time price intelligence across multiple platforms.
+
+An AI-powered price intelligence tool that helps users avoid overpaying across e-commerce platforms.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
@@ -15,6 +17,14 @@
   <a href="#-contributing">Contributing</a> •
   <a href="#-license">License</a>
 </p>
+
+---
+
+## 🧩 Problem This Solves
+
+E-commerce pricing is fragmented across platforms, making it difficult for users to make informed purchasing decisions.
+
+BuySmart introduces a unified, AI-driven approach to price intelligence.
 
 ---
 
@@ -42,6 +52,39 @@ Watch BuySmart in action:
 </div>
 
 > **Getting started?** Follow our [Quick Start guide](#-quick-start) below!
+
+---
+
+## 🧠 Why BuySmart?
+
+Online shoppers often overpay because:
+- Prices vary across platforms
+- Manual comparison is time-consuming
+- Deals are hard to evaluate
+
+BuySmart solves this by:
+- automating price comparison
+- using AI to evaluate fairness
+- helping users make smarter decisions instantly
+
+---
+
+## 💡 Use Cases
+
+- 🛒 Online shoppers — avoid overpaying instantly
+- 💻 Developers — build price comparison tools on top of BuySmart
+- 🏪 E-commerce analysts — track pricing trends
+
+---
+
+## 🚀 Vision
+
+BuySmart aims to become an open infrastructure layer for intelligent shopping — where users no longer need to manually compare prices or analyze deals.
+
+The long-term goal is to:
+- integrate with more platforms globally
+- provide real-time price intelligence
+- enable developers to build on top of BuySmart APIs
 
 ---
 
